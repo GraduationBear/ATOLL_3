@@ -1,0 +1,64 @@
+NM_7212
+
+Nb of antennas : 12
+
+Array type : 1 (Dual frequency)
+
+General meccanic settings : 
+Heights : H1 = 3.0; H2 = 3.2
+Ant Type : H1 = 2 (NM_LPDA.ant); H2 = 1 (TH_FrameReflector.ant)
+
+Ant spacing type : 
+Spacing type : 0
+Base spacing : 0.8 lambda; 	 Array design frequency : 111.1 MHz
+Spacing unit : 1
+
+    Antennas paires :    P1    	   P2    	   P3    	   P4    	   P5    	   P6    	
+    H buttons state :        0	       0	       0	       0	       0	       0	       0	
+    Antenna spacing :  26.1853	 20.6213	 15.6894	 10.5668	  6.0599	  1.8965	
+
+    Antennas labels :    A1    	   A2    	   A3    	   A4    	   A5    	   A6    	   A7    	   A8    	   A9    	   A10   	   A11   	   A12   	
+    Antennas labels :    R6    	   R5    	   R4    	   R3    	   R2    	   R1    	   L1    	   L2    	   L3    	   L4    	   L5    	   L6    	
+
+Ant pos X error (m) :    0.000	   0.000	   0.000	   0.000	   0.000	   0.000	   0.000	   0.000	   0.000	   0.000	   0.000	   0.000	
+Ant pos Y error (m) :    0.000	   0.000	   0.000	   0.000	   0.000	   0.000	   0.000	   0.000	   0.000	   0.000	   0.000	   0.000	
+Ant pos Z error (m) :    0.000	   0.000	   0.000	   0.000	   0.000	   0.000	   0.000	   0.000	   0.000	   0.000	   0.000	   0.000	
+
+Array rotation (°) :     0.00
+Array Y offset (m) :     0.00
+
+        CSB CRS Amp :   0.1084	  0.3126	  0.5931	  0.8488	  1.0000	  1.0000	  1.0000	  1.0000	  0.8488	  0.5931	  0.3126	  0.1084	
+      CSB CRS Phase :      0.0	     0.0	     0.0	     0.0	     0.0	     0.0	     0.0	     0.0	     0.0	     0.0	     0.0	     0.0	
+        SBO CRS Amp :   0.4855	  0.7878	  1.0000	  0.9050	  0.5758	  0.1974	  0.1974	  0.5758	  0.9050	  1.0000	  0.7878	  0.4855	
+      SBO CRS Phase :    -90.0	   -90.0	   -90.0	   -90.0	   -90.0	   -90.0	    90.0	    90.0	    90.0	    90.0	    90.0	    90.0	
+      CSB CLEAR Amp :   0.0000	  0.1184	  0.2512	  0.0000	  0.4731	  1.0000	  1.0000	  0.4731	  0.0000	  0.2512	  0.1184	  0.0000	
+    CSB CLEAR Phase :    180.0	   180.0	   180.0	   180.0	   180.0	     0.0	     0.0	   180.0	   180.0	   180.0	   180.0	   180.0	
+      SBO CLEAR Amp :   0.0447	  0.0966	  0.1012	  0.1120	  0.3187	  1.0000	  1.0000	  0.3187	  0.1120	  0.1012	  0.0966	  0.0447	
+    SBO CLEAR Phase :     90.0	    90.0	   -90.0	   -90.0	   -90.0	   -90.0	    90.0	    90.0	    90.0	    90.0	   -90.0	   -90.0	
+
+      CSB CLEAR 2 Amp :   0.0000	  0.0000	  0.0000	  0.0000	  0.0000	  0.0000	  0.0000	  0.0000	  0.0000	  0.0000	  0.0000	  0.0000	
+    CSB CLEAR 2 Phase :      0.0	     0.0	     0.0	     0.0	     0.0	     0.0	     0.0	     0.0	     0.0	     0.0	     0.0	     0.0	
+      SBO CLEAR 2 Amp :   0.0000	  0.0000	  0.0000	  0.0000	  0.0000	  0.0000	  0.0000	  0.0000	  0.0000	  0.0000	  0.0000	  0.0000	
+    SBO CLEAR 2 Phase :      0.0	     0.0	     0.0	     0.0	     0.0	     0.0	     0.0	     0.0	     0.0	     0.0	     0.0	     0.0	
+
+             CLR2_On : 0
+
+       Ant Error Amp :   1.0000	  1.0000	  1.0000	  1.0000	  1.0000	  1.0000	  1.0000	  1.0000	  1.0000	  1.0000	  1.0000	  1.0000	
+     Ant Error Phase :      0.0	     0.0	     0.0	     0.0	     0.0	     0.0	     0.0	     0.0	     0.0	     0.0	     0.0	     0.0	
+
+       Coupling Amp :   0.0000	  0.0000	  0.0000	  0.0000	  0.0000	  0.0000	  0.0000	  0.0000	  0.0000	  0.0000	  0.0000	
+     Coupling Phase :      0.0	     0.0	     0.0	     0.0	     0.0	     0.0	     0.0	     0.0	     0.0	     0.0	     0.0	
+
+Associated Electronic : 
+Default Signal Generator : 3 (NM 7000B)
+    Default Course power : 15.0 W
+     Default Clear power : 15.0 W
+Clear/Course ratio on CL : -25.0 dB
+        Azimut Clearance : 13.0°
+     DDM Clearance at Az : 0.258333
+
+Photo : 
+Index : 1
+
+Photo : 
+Index : 1

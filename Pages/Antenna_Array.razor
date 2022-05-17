@@ -1,0 +1,46 @@
+﻿@page "/antenna_array"
+@inject Items Items
+@inject AntennaArray antennaArray
+
+
+@if (antennaArray.splited != null)
+{   
+    <h1>Nome de l'antenne : @antennaArray.name</h1>
+    <h2>Nombre d'antennes : @antennaArray.NbAntennes</h2>
+    <h3>Type (booléen) : @antennaArray.Type.ToString()</h3>
+    <h5>Hauteur antenne 1 : @antennaArray.Antenna1Height</h5>
+    <h5>Hauteur antenne 2 : @antennaArray.Antenna2Height</h5>
+    <h6>Nom du fichier antenne 1 : @antennaArray.Antenna1Diagram</h6>
+    <h6>Nom du fichier antenne 2 : @antennaArray.Antenna2Diagram</h6>
+    <br>
+    <br>
+    @foreach(bool s in antennaArray.HbuttonsState)
+    {
+        <p>@s</p>
+    }
+    @foreach (string split in antennaArray.splited)
+    {   
+
+        <p>[@antennaArray.splited.IndexOf(split)] @split</p>
+    }
+    
+}
+
+@code{
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        //Pour chaque item de la TreeView
+        foreach (Item item in Items.list)
+        {
+            //si l'item est selectionné
+            if (item.selected == true)
+            {
+                //On lit le fichier correspondant
+                antennaArray.SetAntennaArray(System.IO.File.ReadAllText(item.path));
+                //Et on sors de la boucle
+                break;
+            }
+        }
+    }
+}

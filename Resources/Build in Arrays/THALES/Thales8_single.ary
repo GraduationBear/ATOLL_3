@@ -1,0 +1,64 @@
+Thales8_single
+
+Nb of antennas : 8
+
+Array type : 0 (Single frequency)
+
+General meccanic settings : 
+Heights : H1 = 1.9; H2 = 2.2
+Ant Type : H1 = 3 (THA_LPDA.ant); H2 = 0 (Iso.ant)
+
+Ant spacing type : 
+Spacing type : 0
+Base spacing : 0.8 lambda; 	 Array design frequency : 110.1 MHz
+Spacing unit : 1
+
+    Antennas paires :    P1    	   P2    	   P3    	   P4    	
+    H buttons state :        0	       0	       0	       0	       0	
+    Antenna spacing :  15.5200	 10.7180	  5.9180	  1.6380	
+
+    Antennas labels :    A1    	   A2    	   A3    	   A4    	   A5    	   A6    	   A7    	   A8    	
+    Antennas labels :    R4    	   R3    	   R2    	   R1    	   L1    	   L2    	   L3    	   L4    	
+
+Ant pos X error (m) :    0.000	   0.000	   0.000	   0.000	   0.000	   0.000	   0.000	   0.000	
+Ant pos Y error (m) :    0.000	   0.000	   0.000	   0.000	   0.000	   0.000	   0.000	   0.000	
+Ant pos Z error (m) :    0.000	   0.000	   0.000	   0.000	   0.000	   0.000	   0.000	   0.000	
+
+Array rotation (°) :     0.00
+Array Y offset (m) :     0.00
+
+        CSB CRS Amp :   0.0650	  0.1836	  0.4143	  1.0000	  1.0000	  0.4143	  0.1836	  0.0650	
+      CSB CRS Phase :    180.0	     0.0	     0.0	     0.0	     0.0	     0.0	     0.0	   180.0	
+        SBO CRS Amp :   0.4970	  0.8620	  1.0000	  0.9570	  0.9570	  1.0000	  0.8620	  0.4970	
+      SBO CRS Phase :    -90.0	   -90.0	   -90.0	   -90.0	    90.0	    90.0	    90.0	    90.0	
+      CSB CLEAR Amp :   0.0000	  0.0000	  0.0000	  0.0000	  0.0000	  0.0000	  0.0000	  0.0000	
+    CSB CLEAR Phase :    180.0	   180.0	   180.0	   180.0	   180.0	   180.0	   180.0	   180.0	
+      SBO CLEAR Amp :   0.0000	  0.0000	  0.0000	  0.0000	  0.0000	  0.0000	  0.0000	  0.0000	
+    SBO CLEAR Phase :    -90.0	   -90.0	   -90.0	   -90.0	    90.0	    90.0	    90.0	    90.0	
+
+      CSB CLEAR 2 Amp :   0.0000	  0.0000	  0.0000	  0.0000	  0.0000	  0.0000	  0.0000	  0.0000	
+    CSB CLEAR 2 Phase :      0.0	     0.0	     0.0	     0.0	     0.0	     0.0	     0.0	     0.0	
+      SBO CLEAR 2 Amp :   0.0000	  0.0000	  0.0000	  0.0000	  0.0000	  0.0000	  0.0000	  0.0000	
+    SBO CLEAR 2 Phase :      0.0	     0.0	     0.0	     0.0	     0.0	     0.0	     0.0	     0.0	
+
+             CLR2_On : 0
+
+       Ant Error Amp :   1.0000	  1.0000	  1.0000	  1.0000	  1.0000	  1.0000	  1.0000	  1.0000	
+     Ant Error Phase :      0.0	     0.0	     0.0	     0.0	     0.0	     0.0	     0.0	     0.0	
+
+       Coupling Amp :   0.0000	  0.0000	  0.0000	  0.0000	  0.0000	  0.0000	  0.0000	
+     Coupling Phase :      0.0	     0.0	     0.0	     0.0	     0.0	     0.0	     0.0	
+
+Associated Electronic : 
+Default Signal Generator : 4 (Thales 420)
+    Default Course power : 15.0 W
+     Default Clear power : 15.0 W
+Clear/Course ratio on CL : -25.0 dB
+        Azimut Clearance : 38.7°
+     DDM Clearance at Az : 0.31
+
+Photo : 
+Index : 8
+
+Photo : 
+Index : 8

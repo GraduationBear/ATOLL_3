@@ -1,0 +1,361 @@
+﻿@page "/display"
+@inject Items Items
+@inject Limites Limites
+@inject IJSRuntime JsRuntime
+@using ATOLL_3.Data;
+
+<div class="container">
+    <div class="lateral">
+        <div class="chart-menu">
+            <div class="chart">
+                @if (this.onglet == "Approach")
+                {
+                <SfChart Width="100%" Title="Limite">
+                    <ChartPrimaryXAxis Title="Distance (m)" ValueType="Syncfusion.Blazor.Charts.ValueType.Double" Interval="@Limites.IntervalApproach" Minimum="@Limites.minApproach" Maximum="@Limites.maxApproach">
+                        
+                    </ChartPrimaryXAxis>
+                    <ChartPrimaryYAxis Title="DDM (μm)" ValueType="Syncfusion.Blazor.Charts.ValueType.Double" Minimum="-Limites.scaleApproach" Maximum="Limites.scaleApproach">
+                    </ChartPrimaryYAxis>
+                    
+                    <ChartSeriesCollection>
+                        <ChartSeries DataSource="@Limites.RechercherParNom(this.onglet).pointsNeg" XName="XValue" YName="YValue" Fill="red" Type="ChartSeriesType.Line">
+                            <ChartSeriesAnimation Enable="false">
+                            </ChartSeriesAnimation>
+                        </ChartSeries>
+                        <ChartSeries DataSource="@Limites.Runway" XName="XValue" ZOrder="1" YName="YValue" Fill="grey" Opacity=1 Type="ChartSeriesType.Area">
+                            <ChartSeriesAnimation Enable="false">
+                            </ChartSeriesAnimation>
+                        </ChartSeries>
+                        <ChartSeries DataSource="@Limites.Loc" XName="XValue" ZOrder="2" YName="YValue" Fill="yellow" Type="ChartSeriesType.Area">
+                            <ChartSeriesAnimation Enable="false">
+                            </ChartSeriesAnimation>
+                        </ChartSeries>
+                        <ChartSeries DataSource="@this.A" DashArray="3" XName="XValue" ZOrder="2" YName="YValue" Opacity="0.7" Fill="blue" Type="ChartSeriesType.Line">
+                            <ChartSeriesAnimation Enable="false">
+                            </ChartSeriesAnimation>
+                            
+                        </ChartSeries>
+                        <ChartSeries DataSource="@this.B" DashArray="3" XName="XValue" ZOrder="2" YName="YValue" Opacity="0.7" Fill="blue" Type="ChartSeriesType.Line">
+                            <ChartSeriesAnimation Enable="false">
+                            </ChartSeriesAnimation>
+                        </ChartSeries>
+                        <ChartSeries DataSource="@this.C" DashArray="3" XName="XValue" ZOrder="2" YName="YValue" Opacity="0.7" Fill="blue" Type="ChartSeriesType.Line">
+                            <ChartSeriesAnimation Enable="false">
+                            </ChartSeriesAnimation>
+                        </ChartSeries>
+                        <ChartSeries DataSource="@this.T" DashArray="3" XName="XValue" ZOrder="2" YName="YValue" Opacity="0.7" Fill="blue" Type="ChartSeriesType.Line">
+                            <ChartSeriesAnimation Enable="false">
+                            </ChartSeriesAnimation>
+                        </ChartSeries>
+                        <ChartSeries DataSource="@this.D" DashArray="3" XName="XValue" ZOrder="2" YName="YValue" Opacity="0.7" Fill="blue" Type="ChartSeriesType.Line">
+                            <ChartSeriesAnimation Enable="false">
+                            </ChartSeriesAnimation>
+                        </ChartSeries>
+                        <ChartSeries DataSource="@this.E" DashArray="3" XName="XValue" ZOrder="2" YName="YValue" Opacity="0.7" Fill="blue" Type="ChartSeriesType.Line">
+                            <ChartSeriesAnimation Enable="false">
+                            </ChartSeriesAnimation>
+                        </ChartSeries>
+                        <ChartSeries DataSource="@Limites.RechercherParNom(this.onglet).pointsPos" XName="XValue" Opacity="0.7" YName="YValue" Fill="red" Type="ChartSeriesType.Line">
+                            <ChartSeriesAnimation Enable="false">
+                            </ChartSeriesAnimation>
+                        </ChartSeries>
+                    </ChartSeriesCollection>
+                    <ChartAnnotations>
+                        <ChartAnnotation X="@this.A[1].XValue" Y="-43" CoordinateUnits="Units.Point">
+                            <ContentTemplate>
+                                <div>A</div>
+                            </ContentTemplate>
+                        </ChartAnnotation>
+                         <ChartAnnotation X="@this.B[1].XValue" Y="-43" CoordinateUnits="Units.Point">
+                            <ContentTemplate>
+                                <div>B</div>
+                            </ContentTemplate>
+                        </ChartAnnotation>
+                         <ChartAnnotation X="@this.C[1].XValue" Y="-43" CoordinateUnits="Units.Point">
+                            <ContentTemplate>
+                                <div>C</div>
+                            </ContentTemplate>
+                        </ChartAnnotation>
+                         <ChartAnnotation X="@this.T[1].XValue" Y="-43" CoordinateUnits="Units.Point">
+                            <ContentTemplate>
+                                <div>T</div>
+                            </ContentTemplate>
+                        </ChartAnnotation>
+                         <ChartAnnotation X="@this.D[1].XValue" Y="-43" CoordinateUnits="Units.Point">
+                            <ContentTemplate>
+                                <div>D</div>
+                            </ContentTemplate>
+                        </ChartAnnotation>
+                         <ChartAnnotation X="@this.E[1].XValue" Y="-43" CoordinateUnits="Units.Point">
+                            <ContentTemplate>
+                                <div>E</div>
+                            </ContentTemplate>
+                        </ChartAnnotation>
+                    </ChartAnnotations>
+                </SfChart>
+                }else{
+                    <SfChart Width="100%" Title="Limite">
+                    <ChartPrimaryXAxis Title="Azimuth" ValueType="Syncfusion.Blazor.Charts.ValueType.Double" Interval="@Limites.IntervalOrbit" Minimum="@Limites.minOrbit" Maximum="@Limites.maxOrbit">
+                    
+                    </ChartPrimaryXAxis>
+                        @if (Limites.scaleOrbit <= 400)
+                        {
+                            <ChartPrimaryYAxis Title="DDM (μm)" ValueType="Syncfusion.Blazor.Charts.ValueType.Double" Minimum="-Limites.scaleOrbit" Maximum="Limites.scaleOrbit">
+                    
+                             </ChartPrimaryYAxis>
+                        }else{
+                            <ChartPrimaryYAxis Title="DDM (μm)" ValueType="Syncfusion.Blazor.Charts.ValueType.Double" Minimum="-400" Maximum="Limites.scaleOrbit">
+                    
+                            </ChartPrimaryYAxis>
+                        }
+                        
+                    
+                    <ChartSeriesCollection>
+                        <ChartSeries DataSource="@Limites.RechercherParNom(this.onglet).pointsNeg" XName="XValue" YName="YValue" Fill="red" Type="ChartSeriesType.Line">
+                            <ChartSeriesAnimation Enable="false">
+                            </ChartSeriesAnimation>
+                        </ChartSeries>
+                        
+                        <ChartSeries DataSource="@Limites.RechercherParNom(this.onglet).pointsPos" XName="XValue" YName="YValue" Fill="red" Type="ChartSeriesType.Line">
+                            <ChartSeriesAnimation Enable="false">
+                            </ChartSeriesAnimation>
+                        </ChartSeries>
+                    </ChartSeriesCollection>
+                </SfChart>
+                }
+                
+            </div>
+        @if(this.onglet=="Orbit"){
+            <div class="Menu">
+                
+                <div class="approach">
+                    <div class="box">
+                        <label class="example-label">End</label>
+                        <SfNumericTextBox TValue="double" Value="@Limites.minOrbit">
+                            <NumericTextBoxEvents TValue="double" ValueChange="OnChangeMin"></NumericTextBoxEvents>
+                        </SfNumericTextBox>
+                    </div>
+                    <div class="box">
+                        <label class="example-label">Pas</label>
+                        <SfNumericTextBox TValue="double" Value="@Limites.pasOrbit" Min="0.1" Max="10">
+                            <NumericTextBoxEvents TValue="double" ValueChange="OnChangePas"></NumericTextBoxEvents>
+                        </SfNumericTextBox>
+                    </div>
+                    <div class="box">
+                        <label class="example-label">Begin</label>
+                        <SfNumericTextBox TValue="double" Value="@Limites.maxOrbit" >
+                            <NumericTextBoxEvents TValue="double" ValueChange="OnChangeMax"></NumericTextBoxEvents>
+                        </SfNumericTextBox>
+                    </div>
+                </div>
+            </div>
+        }else{
+            <div class="Menu">
+                
+                <div class="approach">
+                    <div class="box">
+                        <label class="example-label">End</label>
+                        <SfNumericTextBox TValue="double" Value="@Limites.minApproach">
+                            <NumericTextBoxEvents TValue="double" ValueChange="OnChangeMin"></NumericTextBoxEvents>
+                        </SfNumericTextBox>
+                    </div>
+                    <div class="box">
+                        <label class="example-label">Pas</label>
+                        <SfNumericTextBox TValue="double" Value="@Limites.pasApproach" Min="0.1" Max="10">
+                            <NumericTextBoxEvents TValue="double" ValueChange="OnChangePas"></NumericTextBoxEvents>
+                        </SfNumericTextBox>
+                    </div>
+                    <div class="box">
+                        <label class="example-label">Begin</label>
+                        <SfNumericTextBox TValue="double" Value="@Limites.maxApproach">
+                            <NumericTextBoxEvents TValue="double" ValueChange="OnChangeMax"></NumericTextBoxEvents>
+                        </SfNumericTextBox>
+                    </div>
+                </div>
+            </div>
+        }    
+        </div>
+        
+        <div class="sub">
+            <button class="btn btn-primary" @onclick="Swap">@onglet</button>
+            @if (this.onglet == "Approach")
+            {
+                <div>
+                <div class="ddl">
+                    <label>ICAO Limits</label>
+                    <SfDropDownList TValue="string" TItem="string" @bind-Value="@Limites.selectedApproach" DataSource="@Limites.GetNoms(this.onglet)">
+                        <DropDownListFieldSettings Value="Name"></DropDownListFieldSettings>
+                    </SfDropDownList>
+                </div>
+                <div class="ddl">
+                    <label>DDM Scale</label>
+                    <SfDropDownList TValue="int" TItem="int" @bind-Value="@Limites.scaleApproach" DataSource="@Limites.ListScaleApproach">
+                        <DropDownListTemplates TItem="int">
+                            <ItemTemplate>
+                                <span>± @context</span>
+                            </ItemTemplate>
+                            <ValueTemplate>
+                                <span>± @context</span>
+                            </ValueTemplate>
+                        </DropDownListTemplates>
+                        <DropDownListFieldSettings Value="scale"></DropDownListFieldSettings>
+                    </SfDropDownList>
+                </div>
+                </div>
+            }
+            else
+            {
+                <div>
+                <div class="ddl">
+                    <label>ICAO Limits</label>
+                    <SfDropDownList TValue="string" TItem="string" @bind-Value="@Limites.selectedOrbit" DataSource="@Limites.GetNoms(this.onglet)">
+                        <DropDownListFieldSettings Value="Name"></DropDownListFieldSettings>
+                    </SfDropDownList>
+                </div>
+                <div class="ddl">
+                    <label>DDM Scale</label>
+                    <SfDropDownList TValue="int" TItem="int" @bind-Value="@Limites.scaleOrbit" DataSource="@Limites.ListScaleOrbit">
+                        <DropDownListTemplates TItem="int">
+                            <ItemTemplate>
+                                <span>± @context</span>
+                            </ItemTemplate>
+                            <ValueTemplate>
+                                <span>± @context</span>
+                            </ValueTemplate>
+                        </DropDownListTemplates>
+                        <DropDownListFieldSettings Value="scale"></DropDownListFieldSettings>
+                    </SfDropDownList>
+                </div>
+            </div>
+            }
+            
+        </div>  
+    </div>
+    <div id="treev" class="treeview">
+        <SfTreeView LoadOnDemand="false" TValue="Item">
+            <TreeViewEvents TValue="Item" NodeSelected="Selection" NodeCollapsed="Collapsed" NodeExpanded="ChangeTvState"></TreeViewEvents> 
+            <TreeViewFieldsSettings Selected="selected" DataSource="@Items.list" Id="Id" ParentID="ParentId" HasChildren="HasSubFolders" Text="Name" Expanded="Expanded"></TreeViewFieldsSettings>
+         </SfTreeView>
+    </div>
+   <div id="ddltv" @onclick="ShowTreeView" @onblur="ShowTreeView">
+        <input disabled="true" placeholder=@(Items.ItemSelected) >
+   </div>
+</div>
+
+
+@code{
+    async Task ShowTreeView(){
+        await JsRuntime.InvokeVoidAsync("ShowTreeView");
+    }
+
+    //Méthode permettant de changer d'onglet
+    public void Swap(){
+        if(this.onglet=="Approach"){
+            this.onglet="Orbit";
+        }else if(this.onglet=="Orbit"){
+            this.onglet="Approach";
+        }
+    }
+    //Onglet actuel
+    private List<Point> A;
+    private List<Point> B;
+    private List<Point> C;
+    private List<Point> D;
+    private List<Point> E;
+    private List<Point> T;
+    private string onglet;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        this.onglet = "Orbit";
+        this.A = new List<Point>();
+        this.A.Add(new Point { XValue = Limites.SetBack + Limites.RunwayLength + 7400, YValue = 40 });
+        this.A.Add(new Point { XValue = Limites.SetBack + Limites.RunwayLength + 7400, YValue = -40 });
+        this.B = new List<Point>();
+        this.B.Add(new Point { XValue = Limites.SetBack + Limites.RunwayLength + 1000, YValue = 40 });
+        this.B.Add(new Point { XValue = Limites.SetBack + Limites.RunwayLength + 1000, YValue = -40 });
+        this.C = new List<Point>();
+        this.C.Add(new Point { XValue = Limites.SetBack + Limites.RunwayLength + 572, YValue = 40 });
+        this.C.Add(new Point { XValue = Limites.SetBack + Limites.RunwayLength + 572, YValue = -40 });
+        this.T = new List<Point>();
+        this.T.Add(new Point { XValue = Limites.SetBack + Limites.RunwayLength , YValue = 40 });
+        this.T.Add(new Point { XValue = Limites.SetBack + Limites.RunwayLength , YValue = -40 });
+        this.D = new List<Point>();
+        this.D.Add(new Point { XValue = Limites.SetBack + Limites.RunwayLength -900, YValue = 40 });
+        this.D.Add(new Point { XValue = Limites.SetBack + Limites.RunwayLength -900, YValue = -40 });
+        this.E = new List<Point>();
+        this.E.Add(new Point { XValue = Limites.SetBack +600, YValue = 40 });
+        this.E.Add(new Point { XValue = Limites.SetBack +600, YValue = -40 });
+    }
+
+    public void Selection(NodeSelectEventArgs e){
+        if(e.NodeData.HasChildren==false){
+            foreach(Item item in Items.list){
+                item.selected=false;
+            }
+            int id = int.Parse(e.NodeData.Id);
+            Items.list[id-1].selected=true;
+            Items.ItemSelected=Items.list[id-1].Name;
+        }
+    }
+
+    public void ChangeTvState(NodeExpandEventArgs e){
+
+        int id = int.Parse(e.NodeData.Id);
+        Items.list[id-1].Expanded=true;
+
+
+    }
+
+    public void Collapsed(NodeExpandEventArgs e){
+
+        int id = int.Parse(e.NodeData.Id);
+        Items.list[id-1].Expanded=false;
+
+    }
+
+    //Au changement du pas
+    public void OnChangePas(Syncfusion.Blazor.Inputs.ChangeEventArgs<double> args)
+    {
+        if (this.onglet == "Orbit")
+        {
+            Limites.pasOrbit = args.Value;
+        }
+        else
+        {
+            Limites.pasApproach = args.Value;
+        }
+        StateHasChanged();
+    }
+
+    //Au changement du min
+    public void OnChangeMin(Syncfusion.Blazor.Inputs.ChangeEventArgs<double> args)
+    {
+        if (this.onglet == "Orbit")
+        {
+            Limites.minOrbit = args.Value;
+        }
+        else
+        {
+            Limites.minApproach = args.Value;
+        }
+
+        StateHasChanged();
+    }
+
+    //Au changement du max
+    public void OnChangeMax(Syncfusion.Blazor.Inputs.ChangeEventArgs<double> args)
+    {
+        if (this.onglet == "Orbit")
+        {
+            Limites.maxOrbit = args.Value;
+            
+        }
+        else
+        {
+            Limites.maxApproach = args.Value;
+        }
+        StateHasChanged();
+    }
+}
