@@ -5,19 +5,310 @@
 
 @if (antennaArray.splited != null)
 {   
-    <h1>Nome de l'antenne : @antennaArray.name</h1>
-    <h2>Nombre d'antennes : @antennaArray.NbAntennes</h2>
-    <h3>Type (booléen) : @antennaArray.Type.ToString()</h3>
-    <h5>Hauteur antenne 1 : @antennaArray.Antenna1Height</h5>
-    <h5>Hauteur antenne 2 : @antennaArray.Antenna2Height</h5>
-    <h6>Nom du fichier antenne 1 : @antennaArray.Antenna1Diagram</h6>
-    <h6>Nom du fichier antenne 2 : @antennaArray.Antenna2Diagram</h6>
-    <br>
-    <br>
-    @foreach(bool s in antennaArray.HbuttonsState)
+    <div class="antenna-parameters">
+        <div class="h1">
+            <label>H1</label>
+            <SfNumericTextBox TValue="double" Value="@antennaArray.Antenna1Height">
+                
+            </SfNumericTextBox>
+            <select class="form-select" aria-label="Default select example">
+              <option selected>@antennaArray.Antenna1Diagram</option>
+              
+            </select>
+            <button class="btn btn-primary">Edit antenna</button>
+        </div>
+        <div class="h2">
+            <label>H2</label>
+            <SfNumericTextBox TValue="double" Value="@antennaArray.Antenna2Height" Enabled="false">
+                
+            </SfNumericTextBox>
+            <select class="form-select" aria-label="Default select example" disabled>
+              <option selected>@antennaArray.Antenna2Diagram</option>
+              
+            </select>
+            <button class="btn btn-primary" disabled>Edit antenna</button>
+        </div>
+    </div>
+
+    if (antennaArray.NbAntennes % 2 == 0)
     {
-        <p>@s</p>
+        <table class="tablecenterCSS table table-hover table-bordered">
+            <thead >
+                <tr>
+
+                        @for(int i=0; i < antennaArray.NbAntennes / 2; i++)
+                        {
+                            <th>@antennaArray.AntennaLabels1[i]</th>
+                        }
+                    
+                </tr>
+                <tr>
+                    @for(int i=0; i < antennaArray.NbAntennes / 2; i++)
+                    {
+                        <th>@antennaArray.AntennaLabels2[i]</th>
+                    }
+                </tr>
+            </thead>
+        
+            <tbody>
+                <tr>
+                @for(int i=0; i < antennaArray.NbAntennes / 2; i++)
+                {
+                    <td>@antennaArray.DeltaX[i]</td>
+                }
+                </tr>
+                <tr>
+                    @for(int i=0; i < antennaArray.NbAntennes / 2; i++)
+                    {
+                        <td>@antennaArray.DeltaY[i]</td>
+                    }
+                </tr>
+                <tr>
+                    @for(int i=0; i < antennaArray.NbAntennes / 2; i++)
+                    {
+                        <td>@antennaArray.DeltaZ[i]</td>
+                    }
+                </tr>
+            </tbody>
+        
+        </table>
+
+
+    <table class="tablecenterCSS table table-hover table-bordered">
+        <tbody>
+            <tr>
+                @foreach(double s in antennaArray.AntennaSpacing)
+                {
+                    <td>@s</td>
+                }
+            </tr>
+            <tr>
+                 @foreach(bool s in antennaArray.HbuttonsState)
+                {
+                        @if (s)
+                        {
+                            <td>
+                                <button class="btn btn-primary" >H1</button>
+                            </td>
+                        }
+                        else
+                        {
+                            <td>
+                                <button class="btn btn-primary" disabled >H1</button>
+                            </td>
+                            
+                        }
+                    }
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="tablecenterCSS table table-hover table-bordered">
+            <thead >
+                <tr>
+                        @for(int i=antennaArray.NbAntennes-1; i >= antennaArray.NbAntennes/2; i--)
+                        {
+                            <th>@antennaArray.AntennaLabels1[i]</th>
+                        }
+                    
+                </tr>
+                <tr>
+                    @for(int i=antennaArray.NbAntennes-1; i >= antennaArray.NbAntennes/2; i--)
+                    {
+                        <th>@antennaArray.AntennaLabels2[i]</th>
+                    }
+                </tr>
+            </thead>
+        
+            <tbody>
+                <tr>
+                @for(int i=antennaArray.NbAntennes-1; i >= antennaArray.NbAntennes/2; i--)
+                {
+                    <td>@antennaArray.DeltaX[i]</td>
+                }
+                </tr>
+                <tr>
+                    @for(int i=antennaArray.NbAntennes-1; i >= antennaArray.NbAntennes/2; i--)
+                    {
+                        <td>@antennaArray.DeltaY[i]</td>
+                    }
+                </tr>
+                <tr>
+                    @for(int i=antennaArray.NbAntennes-1; i >= antennaArray.NbAntennes/2; i--)
+                    {
+                        <td>@antennaArray.DeltaZ[i]</td>
+                    }
+                </tr>
+            </tbody>
+        </table>
     }
+    else
+    {   
+        <div class="contain-all">
+            <div class="tableau-principal">
+                <table class="tablecenterCSS table table-hover table-bordered">
+                    <thead>
+                        <tr>
+
+                                @for(int i=0; i < antennaArray.NbAntennes / 2; i++)
+                                {
+                                    <th>@antennaArray.AntennaLabels1[i]</th>
+                                }
+                    
+                        </tr>
+                        <tr>
+                            @for(int i=0; i < antennaArray.NbAntennes / 2; i++)
+                            {
+                                <th>@antennaArray.AntennaLabels2[i]</th>
+                            }
+                        </tr>
+                    </thead>
+        
+                    <tbody>
+                        <tr>
+                        @for(int i=0; i < antennaArray.NbAntennes / 2; i++)
+                        {
+                            <td>@antennaArray.DeltaX[i]</td>
+                        }
+                        </tr>
+                        <tr>
+                            @for(int i=0; i < antennaArray.NbAntennes / 2; i++)
+                            {
+                                <td>@antennaArray.DeltaY[i]</td>
+                            }
+                        </tr>
+                        <tr>
+                            @for(int i=0; i < antennaArray.NbAntennes / 2; i++)
+                            {
+                                <td>@antennaArray.DeltaZ[i]</td>
+                            }
+                        </tr>
+                    </tbody>
+        
+                </table>
+
+
+            <table class="tablecenterCSS table table-hover table-bordered">
+                <tbody>
+                    <tr>
+                        @foreach(double s in antennaArray.AntennaSpacing)
+                        {
+                            <td>@s</td>
+                        }
+                    </tr>
+                    <tr>
+                        @foreach(bool s in antennaArray.HbuttonsState)
+                        {
+                            @if (s)
+                            {
+                                <td>
+                                    <button class="btn btn-primary" >H1</button>
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    <button class="btn btn-primary" disabled >H1</button>
+                                </td>
+                            
+                            }
+                        }
+                    </tr>
+                </tbody>
+            </table>
+
+            <table class="tablecenterCSS table table-hover table-bordered">
+                    <thead >
+                        <tr>
+                                @for(int i=antennaArray.NbAntennes-1; i > antennaArray.NbAntennes/2; i--)
+                                {
+                                    <th>@antennaArray.AntennaLabels1[i]</th>
+                                }
+                    
+                        </tr>
+                        <tr>
+                            @for(int i=antennaArray.NbAntennes-1; i > antennaArray.NbAntennes/2; i--)
+                            {
+                                <th>@antennaArray.AntennaLabels2[i]</th>
+                            }
+                        </tr>
+                    </thead>
+        
+                    <tbody>
+                        <tr>
+                        @for(int i=antennaArray.NbAntennes-1; i > antennaArray.NbAntennes/2; i--)
+                        {
+                            <td>@antennaArray.DeltaX[i]</td>
+                        }
+                        </tr>
+                        <tr>
+                            @for(int i=antennaArray.NbAntennes-1; i > antennaArray.NbAntennes/2; i--)
+                            {
+                                <td>@antennaArray.DeltaY[i]</td>
+                            }
+                        </tr>
+                        <tr>
+                            @for(int i=antennaArray.NbAntennes-1; i > antennaArray.NbAntennes/2; i--)
+                            {
+                                <td>@antennaArray.DeltaZ[i]</td>
+                            }
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        
+            <div class="petit">
+                <table class="tablecenterCSS table table-hover table-bordered">
+                
+                    <thead >
+                        <tr>
+                                
+                                    <th>@antennaArray.AntennaLabels1[antennaArray.NbAntennes/2]</th>
+                                
+                    
+                        </tr>
+                        <tr>
+
+                                <th>@antennaArray.AntennaLabels2[antennaArray.NbAntennes/2]</th>
+                            
+                        </tr>
+                    </thead>
+        
+                    <tbody>
+                        <tr>
+                        
+                            <td>@antennaArray.DeltaX[antennaArray.NbAntennes/2]</td>
+                        
+                        </tr>
+                        <tr>
+                            
+                                <td>@antennaArray.DeltaY[antennaArray.NbAntennes/2]</td>
+                            
+                        </tr>
+                        <tr>
+                            
+                                <td>@antennaArray.DeltaZ[antennaArray.NbAntennes/2]</td>
+                            
+                        </tr>
+                    <tr>
+                        
+                            @if (antennaArray.HbuttonsState[antennaArray.HbuttonsState.Count() - 1])
+                            {
+                                <td><button class="btn btn-primary">H1</button></td>
+                            }else{
+
+                                <td><button class="btn btn-primary" disabled>H1</button></td>
+                            }
+
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+            
+        </div>
+    }
+
+
     @foreach (string split in antennaArray.splited)
     {   
 
