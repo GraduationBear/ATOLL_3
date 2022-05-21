@@ -12,6 +12,7 @@ namespace ATOLL_3;
         public bool selected{get;set;}
         public string path{get;set;}
 
+        //classe représentant un Item de la TreeView
         public Item(string Id,string Name,bool HasSubFolders,string ParentId=null,bool Selected=false,string path=null){
             this.Id=Id;
             this.ParentId=ParentId;

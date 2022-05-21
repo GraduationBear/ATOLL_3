@@ -101,6 +101,7 @@ public class Limites{
         
     }
 
+    //Mets en place les valeurs correspondant à l'onglet ORBIT
     public void SetOrbit(int min=-40, int max=40){
         this.selectedOrbit="OFF";
         this.IntervalOrbit=5;
