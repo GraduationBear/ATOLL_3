@@ -5,7 +5,16 @@
 
 @if (antennaArray.splited != null)
 {   
-    <div class="antenna-parameters">
+    <nav>
+        <ul class="navbar">
+            <li><a style=@style1 @onclick="@(e => changeOnglet(e, 1))">Approach</a></li>
+            <li><a style=@style2 @onclick="@(e => changeOnglet(e, 2))">Orbit</a></li>
+        </ul>
+    </nav>
+
+    @if (this.onglet)
+    {
+        <div class="antenna-parameters">
         <div class="h1">
             <label>H1</label>
             <SfNumericTextBox TValue="double" Value="@antennaArray.Antenna1Height">
@@ -13,7 +22,7 @@
             </SfNumericTextBox>
             <select class="form-select" aria-label="Default select example">
               <option selected>@antennaArray.Antenna1Diagram</option>
-              
+                
             </select>
             <button class="btn btn-primary">Edit antenna</button>
         </div>
@@ -29,18 +38,17 @@
             <button class="btn btn-primary" disabled>Edit antenna</button>
         </div>
     </div>
-
-    if (antennaArray.NbAntennes % 2 == 0)
+    
+    @if (antennaArray.NbAntennes % 2 == 0)
     {
+        <div class="tableaux">
         <table class="tablecenterCSS table table-hover table-bordered">
             <thead >
                 <tr>
-
                         @for(int i=0; i < antennaArray.NbAntennes / 2; i++)
                         {
                             <th>@antennaArray.AntennaLabels1[i]</th>
                         }
-                    
                 </tr>
                 <tr>
                     @for(int i=0; i < antennaArray.NbAntennes / 2; i++)
@@ -72,8 +80,6 @@
             </tbody>
         
         </table>
-
-
     <table class="tablecenterCSS table table-hover table-bordered">
         <tbody>
             <tr>
@@ -141,9 +147,10 @@
                 </tr>
             </tbody>
         </table>
+        </div>
     }
     else
-    {   
+    {   <div class="tableaux">
         <div class="contain-all">
             <div class="tableau-principal">
                 <table class="tablecenterCSS table table-hover table-bordered">
@@ -262,36 +269,23 @@
                 
                     <thead >
                         <tr>
-                                
-                                    <th>@antennaArray.AntennaLabels1[antennaArray.NbAntennes/2]</th>
-                                
-                    
+                            <th>@antennaArray.AntennaLabels1[antennaArray.NbAntennes/2]</th>
                         </tr>
                         <tr>
-
-                                <th>@antennaArray.AntennaLabels2[antennaArray.NbAntennes/2]</th>
-                            
+                            <th>@antennaArray.AntennaLabels2[antennaArray.NbAntennes/2]</th>
                         </tr>
                     </thead>
-        
                     <tbody>
                         <tr>
-                        
                             <td>@antennaArray.DeltaX[antennaArray.NbAntennes/2]</td>
-                        
                         </tr>
                         <tr>
-                            
-                                <td>@antennaArray.DeltaY[antennaArray.NbAntennes/2]</td>
-                            
+                            <td>@antennaArray.DeltaY[antennaArray.NbAntennes/2]</td>
                         </tr>
                         <tr>
-                            
                                 <td>@antennaArray.DeltaZ[antennaArray.NbAntennes/2]</td>
-                            
                         </tr>
                     <tr>
-                        
                             @if (antennaArray.HbuttonsState[antennaArray.HbuttonsState.Count() - 1])
                             {
                                 <td><button class="btn btn-primary">H1</button></td>
@@ -306,7 +300,29 @@
             </div>
             
         </div>
+        </div>
     }
+    
+
+    <div class="bottom-page-1">
+        <div>
+            <label>Antenna Rotation :</label>
+            <SfNumericTextBox Width="200px" TValue="double" Value="@antennaArray.AntennaRotation">
+            </SfNumericTextBox>
+        </div>
+        <div>
+            <label>Array Y offset :</label>
+            <SfNumericTextBox Width="200px" TValue="double" Value="@antennaArray.ArrayYoffset">
+            </SfNumericTextBox>
+        </div>
+        
+        </div>
+    }
+    else
+    {
+        
+    }
+
 
 
     @foreach (string split in antennaArray.splited)
@@ -318,6 +334,37 @@
 }
 
 @code{
+
+
+    private bool onglet = true;
+    private string style1 = "background-color: rgba(30, 30, 30, 0.7)";
+    private string style2 = "background-color: rgba(30, 30, 30, 0.1)";
+
+    private void changeOnglet(MouseEventArgs e,int number)
+    {
+        if (this.onglet)
+        {
+            if (number == 2)
+            {
+                this.style1 = "background-color: rgba(30, 30, 30, 0.1)";
+                this.style2 = "background-color: rgba(30, 30, 30, 0.7)";
+                this.onglet =! this.onglet;
+            }
+
+        }else{
+
+            if(number == 1)
+            {
+                this.style1 = "background-color: rgba(30, 30, 30, 0.7)";
+                this.style2 = "background-color: rgba(30, 30, 30, 0.1)";
+                this.onglet =! this.onglet;
+            }
+            
+        }
+        
+    }
+
+
     protected override void OnInitialized()
     {
         base.OnInitialized();

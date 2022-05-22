@@ -11,18 +11,16 @@ public class AntennaArray
     public double Antenna2Height { get; private set; }
     public string Antenna1Diagram { get; private set; }
     public string Antenna2Diagram { get; private set; }
-
-
     public List<string> AntennaPaires { get; private set; }
     public List<bool> HbuttonsState { get; private set; }
     public List<double> AntennaSpacing { get; private set; }
-
-
     public List<String> AntennaLabels1 { get; private set; }
     public List<String> AntennaLabels2 { get; private set; }
     public List<double> DeltaX { get; private set; }
     public List<double> DeltaY { get; private set; }
     public List<double> DeltaZ { get; private set; }
+    public double AntennaRotation { get; private set; }
+    public double ArrayYoffset { get; private set; }
 
     public void SetAntennaArray(string text)
     {
@@ -133,6 +131,12 @@ public class AntennaArray
                     {
                         this.DeltaZ.Add(double.Parse(this.splited[j], CultureInfo.InvariantCulture));
                     }
+                    break;
+                case "Array Rotation":
+                    this.AntennaRotation=double.Parse(this.splited[i+2], CultureInfo.InvariantCulture);
+                    break;
+                case "Array Y offset":
+                    this.ArrayYoffset= double.Parse(this.splited[i + 2], CultureInfo.InvariantCulture);
                     break;
             }
         }
